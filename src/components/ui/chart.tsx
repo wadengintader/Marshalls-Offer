@@ -105,6 +105,12 @@ ${colorConfig
 
 const ChartTooltip = RechartsPrimitive.Tooltip
 
+import type { TooltipProps } from "recharts"
+
+type ChartTooltipProps = TooltipProps<any, any> & {
+  payload?: Array<any>
+}
+
 function ChartTooltipContent({
   active,
   payload,
@@ -119,7 +125,7 @@ function ChartTooltipContent({
   color,
   nameKey,
   labelKey,
-}: TooltipProps<any, any> &
+}: ChartTooltipProps &
   React.ComponentProps<"div"> & {
     hideLabel?: boolean
     hideIndicator?: boolean
@@ -127,6 +133,7 @@ function ChartTooltipContent({
     nameKey?: string
     labelKey?: string
   }) {
+
   const { config } = useChart()
 
   const tooltipLabel = React.useMemo(() => {
