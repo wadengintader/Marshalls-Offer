@@ -105,8 +105,9 @@ ${colorConfig
 
 const ChartTooltip = RechartsPrimitive.Tooltip
 
-type ChartTooltipProps = TooltipProps<any, any> & {
-  payload?: Array<any>
+type ChartTooltipProps = Omit<TooltipProps<any, any>, "label"> & {
+  payload?: any[]
+  label?: string | number
 }
 
 function ChartTooltipContent({
